@@ -1,0 +1,431 @@
+page {
+    background-color: #F5F5F5;
+}
+
+.radius-4{ border-radius: 4px; }
+.radius-8{ border-radius: 8px; }
+
+//margin,padding设值
+.pos-loop(@i, @n) when (@i <= @n) {
+	.mt@{i} {margin-top: unit(@i,px)!important;}
+	.mb@{i} {margin-bottom: unit(@i,px)!important;}
+	.ml@{i} {margin-left: unit(@i,px)!important;}
+    .mr@{i} {margin-right: unit(@i,px)!important;}
+    .m@{i} {margin: unit(@i,px)!important;}
+	.pt@{i} {padding-top: unit(@i,px)!important;}
+	.pb@{i} {padding-bottom: unit(@i,px)!important;}
+	.pl@{i} {padding-left: unit(@i,px)!important;}
+    .pr@{i} {padding-right: unit(@i,px)!important;}
+    .p@{i} {padding: unit(@i,px)!important;}
+	.pos-loop((@i + 5), @n);
+}
+.pos-loop(5,50);
+
+.txt-left{text-align: left;}
+.txt-center{text-align: center;}
+.txt-right{text-align: right;}
+
+// 浮动, 兼容 IE6
+.fl { float: left; }
+.fr { float: right; }
+// 清除浮动
+.clearfix {
+    &:after { display: block; clear: both; content: ''; visibility: hidden; height: 0; }
+}
+.clearfix() {
+    &:after { display: block; clear: both; content: ''; visibility: hidden; height: 0; }
+}
+/*-------------------------------------
+├   字体                              ┆
+└------------------------------------*/
+// 字体大小
+.fz-0 { font-size: 0!important; }
+.fz-loop(@i, @n) when (@i <= @n) {
+	.fz-@{i} { font-size: unit(@i,px)!important;}
+	.fz-loop((@i + 1), @n);
+}
+.fz-loop(10,30);
+
+
+//============小程序
+button{
+	&:after{
+		border: none;
+	}
+}
+
+//============通用==============
+.cgg-noline{
+	border-top: none;
+	border-bottom: none;
+}
+
+.cgg-cells{
+    &::before, &::after{
+        border: none!important;
+        height: 0;
+    }
+}
+.cgg-cells__input{
+	height: 88rpx;
+	background-color: #F5F5F5;
+	font-size: 28rpx;
+	padding: 20rpx 0;
+	box-sizing: border-box;
+}
+.cgg-cells__tips{
+	.clearfix();
+	font-size: 24rpx;
+}
+// 输入框带的关闭按钮
+.cgg-input-close{
+    padding: 0 10px;
+    width: 24px;
+    height: 24px;
+    .icon{
+        margin: 4px;
+        width: 16px;
+        height: 16px;
+    }
+}
+
+
+// 块状（用在“确认订单”）
+.cgg-block{
+	.cgg-block-item{
+		.clearfix();
+		padding: 14px 15px;
+		border-top: 1rpx solid #E3E3E3;
+		font-size: 14px;
+		background-color: #fff;
+	}
+}
+
+//==========================
+// 行（水平）
+.cgg-flex{
+	display: flex;
+}
+// 列（垂直）
+.cgg-flex-column{
+	display: flex;
+	flex-flow: column nowrap;
+}
+.cgg-flex-1{
+	flex: 1;
+}
+
+.loadmore{
+    background-color: #F5F5F5;
+}
+// 加载
+.cgg-loading{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 12px;
+	color: #ccc;
+	.img{
+		vertical-align: middle;
+		width: 20px;
+		height: 20px;
+	}
+	span{
+		vertical-align: middle;
+	}
+}
+
+.cgg-copyright{
+    margin: 0 97px;
+    padding: 20px 0;
+    color: #ccc;
+    .title-line{
+        position: relative;
+        // width: 180px;
+        border-bottom: 1rpx solid #ccc;
+        .text{
+            position: absolute;
+            left: 50%;
+            top: -6px;
+            margin-left: -40px;
+            width: 80px;
+            line-height: 12px;
+            font-size: 11px;
+            background: #F5F5F5;
+            text-align: center;
+        }
+    }
+}
+
+
+// 弹框
+.toast-class{
+    padding: 10px 33px!important;
+    width:150px;
+    line-height: 1.2;
+    border-radius: 18px!important;
+    background-color: rgba(0, 0, 0, 0.6)!important;
+    font-size: 14px;
+    box-shadow: none!important;
+}
+.toast-carframe{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    .toast-carframe__con{
+      top: 50%;
+      margin-top: 170px;
+      height: 340px;
+      text-align: center;
+      .card{
+        display: block;
+        padding: 0 33px;
+		width: 308px;
+		height: 202px;
+      }
+      .close{
+          margin-top: 50px;
+      }
+    }
+}
+
+// iphoneX
+.fix-iphonex-button {
+    height: 34px;
+}
+
+// 焦点图指示点
+.swiper-box{
+    position:relative;
+    .wx-swiper-dots.wx-swiper-dots-horizontal{
+        bottom: 10px;
+    }
+    .wx-swiper-dot{
+        display: inline-flex;
+        width: 8rpx;
+        height: 8rpx;
+        margin-left: -1px;
+        // justify-content: space-between;
+        // justify-content: flex-start;
+        background: none;
+    }
+
+    .wx-swiper-dot::before{
+        content: '';
+        flex-grow: 1;
+        background: #D8D8D8;
+        border-radius: 8rpx;
+    }
+    .wx-swiper-dot-active::before{
+        background:#EE542E; 
+    }
+}
+
+
+// 报告详情
+.pd15() { padding: 15px; }
+@bg-color: #F2F2F2;
+@main_color: #EE542E;
+@boreder_bottom_color: #E3E3E3;
+
+@zi-color: #212121;
+@sub-zi-color: #999;
+.report-main{
+    .top-bg{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        background: @main_color;
+        z-index: 1;
+    }
+    
+    .report-content{
+        position: relative;
+        padding: 10px 12px;
+        z-index: 99;
+        .report-block{
+            margin-top: 10px;
+            // background-color: #fff;
+            &:first-child{
+                margin-top: 0;
+            }
+        }
+
+        // 车辆简介（名称，logo，vin等）
+        .report-intro{
+            position: relative;
+            border-radius: 10px;
+            background-color: #fff;
+            color: @zi-color;
+            .report-intro-car{
+                // margin: 0 15px;
+                border-bottom: 1rpx solid @boreder_bottom_color;
+                .car-info{
+                    // .pd15();
+                    padding: 15px;
+                    .img-label{
+                        padding-top: 4px;
+                        padding-right: 10px;
+                        width: 36px;
+                        height: 36px;
+                    }
+                    .text{
+                        margin-top: 4px;
+                        line-height: 1.4;
+                        &:first-child{
+                            margin-top: 0;
+                        }
+                    }
+                    .name{ color: @zi-color; }
+                    .vin{ color: @sub-zi-color; }
+                }
+            }
+            .icon-demo{
+                position: absolute;
+                right: -8px;
+                top: -17px;
+                width: 164rpx;
+                height: 164rpx;
+            }
+            .report-intro-date{
+                .pd15();
+                line-height: 20px;
+                font-size: 14px;
+            }
+            // 车辆状态信息
+            // .report-state{
+                // color: #211614;
+                .report-state-list{
+                    .pd15();
+                    padding: 20px 15px;
+                    .item{
+                        margin-top: 13px;
+                        line-height: 17px;
+                        font-size: 12px;
+                        color: @sub-zi-color;
+                        &:first-child{
+                            margin-top: 0;
+                        }
+                        span{
+                            color: @zi-color;
+                        }
+                    }
+                }
+            // }
+        }
+
+        // 记录详情
+        .report-records{
+            margin-top: 0;
+            color: @zi-color;
+            .title{
+                .pd15();
+                line-height: 20px;
+                font-size: 14px;
+                font-weight: 600;
+                border-bottom: 1rpx solid @boreder_bottom_color;
+            }
+            .records-list{
+                .records-year{
+                    span{
+                        display: inline-block;
+                        position: relative; left: 50%; transform: translate(-50%, 0);
+                        margin: 15px 0 5px;
+                        padding: 0 17px;
+                        height: 22px;
+                        line-height: 22px;
+                        background-color: #E4E4E4;
+                        font-size: 12px;
+                        border-radius: 11px;
+                    }
+                }
+                .records-item{
+                    margin-top: 10px;
+                    border-radius: 10px;
+                    background: #fff;
+                    color: @zi-color;
+                    .records-item-title{
+                        padding: 10px 15px;
+                        font-size: 14px;
+                        height: 20px;
+                        line-height: 20px;
+                        border-bottom: 1rpx solid @boreder_bottom_color;
+                        .icon{
+                            display: inline-block;
+                            margin: 1px 8px 0 0;
+                            width: 18px;
+                            height: 18px;
+                        }
+                        .name{
+                            // color: #333840;
+                        }
+                        .distance{
+                            color: @main_color;
+                            font-weight: bold;
+                        }
+                    }
+                    .records-item-table{
+                        .pd15();
+                        .tr{
+                            display: flex;
+                            margin-top: 10px;
+                            font-size: 14px;
+                            &:first-child{
+                                margin-top: 0;
+                            }
+                            .th{
+                                margin-right: 15px;
+                                // color: #999;
+                                color: @sub-zi-color;
+                                line-height: 20px;
+                            }
+                            .td{
+                                flex: 1;
+                                line-height: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 快捷导航
+.quick-list{
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    z-index: 9999;
+    .btn{
+        margin-top: 12px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 50%;
+        color: #6b6764;
+        background: #fff;
+        border: 1px solid #ebebeb;
+        font-size: 12px;
+        text-align: center;
+        box-shadow: 0px 5px 10px #888;
+        box-sizing: border-box;
+        &.quick{
+            color: #fff;
+            background: #fe641a;
+            border: none;
+            padding: 7px 10px;
+            line-height: 18px;
+        }
+    }
+}
+
+// 富文本
+.wxParse{
+    
+}
